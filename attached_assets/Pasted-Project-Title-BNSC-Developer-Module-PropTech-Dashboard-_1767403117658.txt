@@ -1,0 +1,63 @@
+Project Title: BNSC Developer Module - PropTech Dashboard
+
+Role: Act as an expert Full-Stack Developer and UI/UX Designer.
+
+Goal: Build a responsive Developer Dashboard for a PropTech platform called "BNSC." The dashboard facilitates a specific workflow: initially "blind" (privacy-focused) for monitoring, shifting to "verification-heavy" for closing deals.
+
+Tech Stack:
+
+Frontend: React, Vite, Tailwind CSS.
+
+Components: Shadcn UI (or generic accessible components), Lucide React (icons).
+
+Charts: Recharts (for analytics).
+
+Navigation: Sidebar navigation with React Router.
+
+Core Page Requirements & Features:
+
+1. Dashboard Overview (Home)
+
+Metric Cards: Display high-level stats: "Active Projects," "Pending Verifications," "Total Units Sold," and "Monthly Engagement."
+
+Action Required Section: A prominent list of items requiring immediate attention (e.g., "3 SPAs pending verification").
+
+2. Project & Data Management (The 'Input' Phase)
+
+Project Upload Portal: A multi-step form to input project details, pricing, unit mix, and rebate structures.
+
+USP Editor: A dedicated section where developers can define and update "Unique Selling Propositions" (key differentiators).
+
+Inventory Management: A table view showing "Sold" vs. "Available" units with a quarterly "Occupancy Tracker" input field.
+
+3. Verification & Compliance (The 'Action' Phase)
+
+Document Verification Portal: A secure interface to view uploaded PDFs (simulate with placeholders) for SPAs and Bank Letters of Offer.
+
+Dual Confirmation System: Implement a specific workflow where the developer must click to digitally acknowledge: "Booking," "Buyer Identity," and "Commission %."
+
+Timestamp Logic: visually display two timestamps next to every action: the "System Timestamp" and the "Developer Action Timestamp" to prevent backdating.
+
+4. Analytics & Market Intelligence (The 'Wait' Phase)
+
+Engagement Dashboard: Show anonymized metrics (e.g., "25 Agents viewed this project") using line charts. Important: Do NOT show agent names here.
+
+Market Comparison Tool: Create a section that simulates synced data from external sources (iProperty, PropertyGuru) comparing Yield, Occupancy, and Price PSF.
+
+Buyer Data Unlock: Implement a UI state where buyer contact details are blurred/locked by default and only "Unlock" after the Booking Confirmation status is set to true.
+
+5. Financial Oversight
+
+Payout Confirmation: A list of staged projects (e.g., Stage 2a) with buttons to "Approve Disbursement."
+
+Rebate Logic View: A read-only view showing how the AI matches their project to buyers based on loan margins (visualize this as a simple match-score card).
+
+UI/UX Design Guidelines:
+
+Theme: Professional, clean, and trustworthy (Blues, Greys, and White).
+
+Privacy Indicators: Use visual lock icons 🔒 on any screen displaying buyer data until the "Unlock" phase is triggered.
+
+Responsiveness: Ensure the sidebar collapses on mobile.
+
+Start by generating the project structure and the main Dashboard shell.
