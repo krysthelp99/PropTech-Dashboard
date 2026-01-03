@@ -1,0 +1,76 @@
+Feature Request: Authentication Flow (Landing & Login UI)
+
+Role: Expert Frontend Developer.
+
+Goal: Implement the initial entry screens for the BNSC PropTech application based on the provided design concepts. The user must navigate through these screens before accessing the main Dashboard.
+
+1. Routing & Structure
+
+Set up React Router.
+
+Route / (Landing Page): The default entry point.
+
+Route /login (Login Page): Accessed via the Landing page.
+
+Route /dashboard: Protected route. Only accessible after clicking "Login" (simulate authentication).
+
+2. Page 1: Landing Page Design (/)
+
+Layout: Full-screen background image.
+
+Visuals:
+
+Background: Use a high-quality placeholder image of "modern skyscrapers looking up" (blue sky, urban aesthetic) to match the "PropTech" theme.
+
+Center Content:
+
+Logo: A white circular icon containing a building symbol.
+
+Main Title: "PropTech Developer" (Large, Bold, White text).
+
+Subtitle: "BNSC" (Smaller, White text).
+
+Action: A large "Get Started" button (Bright Blue bg-blue-600, rounded corners) at the bottom center. Clicking this navigates to /login.
+
+3. Page 2: Login Page Design (/login)
+
+Layout: Split-screen design (50% Left Image / 50% Right Form).
+
+Left Column:
+
+Displays the same "modern skyscrapers" image as the landing page (covering the full height).
+
+Right Column (Form):
+
+Header: Small Logo + "PropTech Developer" text at the top left.
+
+Greeting: "Welcome to PropTech Developer!" (Bold, Black).
+
+Subtext: "Please enter your login credentials to access your account." (Gray).
+
+Input Fields:
+
+"Email or Username" (Outlined input style).
+
+"Password" (Outlined input style).
+
+Controls:
+
+Row containing: "Remember me" (Checkbox) and "Forgot Password" (Blue text link).
+
+Primary Button: "Login" (Full width, Dark Blue bg-indigo-900). Action: Redirects user to /dashboard.
+
+Footer: "Don't have an account? Register" (Centered at the bottom).
+
+4. Global UI/UX Settings
+
+Font: Use a clean Sans-Serif font (Inter or Roboto).
+
+Responsiveness: On mobile devices, hide the "Left Image" column on the Login page and make the Form full-width.
+
+How this integrates with your previous prompts:
+Flow: It establishes the "front door" of the app.
+
+Protection: It tells the AI to treat the Dashboard (which we designed in the previous turn) as a "Protected Route," meaning the Sidebar and Navbar won't clutter these login screens.
+
+Visual Consistency: It explicitly asks for the "Skyscraper/Urban" imagery to match the screenshots you provided.
