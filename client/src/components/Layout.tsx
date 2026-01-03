@@ -17,8 +17,6 @@ import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-import logoImg from "@assets/image_1767404911098.png";
-
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/" },
   { label: "Project Management", icon: Building2, href: "/projects" },
@@ -35,7 +33,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex flex-col h-full bg-sidebar text-sidebar-foreground border-r border-sidebar-border">
       <div className="p-6">
         <div className="flex items-center gap-2 mb-8">
-          <img src={logoImg} alt="PropDev Logo" className="h-8 w-auto object-contain" />
+          <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
+            <span className="font-bold text-white text-lg">B</span>
+          </div>
+          <span className="font-display font-bold text-xl tracking-tight">BNSC</span>
         </div>
         
         <nav className="space-y-1">
@@ -109,9 +110,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Mobile Sidebar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-sidebar border-b border-sidebar-border px-4 py-3 flex items-center justify-between">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sidebar border-b border-sidebar-border px-4 py-3 flex items-center justify-between">
          <div className="flex items-center gap-2">
-            <img src={logoImg} alt="PropDev Logo" className="h-7 w-auto object-contain" />
+            <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
+              <span className="font-bold text-white text-lg">B</span>
+            </div>
+            <span className="font-display font-bold text-xl text-sidebar-foreground">BNSC</span>
           </div>
         <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
           <SheetTrigger asChild>
