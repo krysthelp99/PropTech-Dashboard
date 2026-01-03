@@ -12,6 +12,7 @@ import Inventory from "@/pages/Inventory";
 import Verification from "@/pages/Verification";
 import Analytics from "@/pages/Analytics";
 import Financials from "@/pages/Financials";
+import Settings from "@/pages/Settings";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
         <Route path="/verification" component={Verification} />
         <Route path="/analytics" component={Analytics} />
         <Route path="/financials" component={Financials} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

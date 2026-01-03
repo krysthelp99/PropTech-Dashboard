@@ -7,10 +7,13 @@ import {
   Wallet, 
   Settings,
   LogOut,
-  Menu
+  Menu,
+  HelpCircle,
+  Separator as SeparatorIcon
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +59,32 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
       </div>
 
-      <div className="mt-auto p-6 border-t border-sidebar-border">
+      <div className="mt-auto p-6 space-y-4">
+        <div className="space-y-1">
+          <Link href="/settings">
+            <a className={cn(
+              "flex items-center gap-3 px-3 py-2.5 rounded-md transition-all duration-200 group",
+              location === "/settings" 
+                ? "bg-sidebar-primary text-sidebar-primary-foreground" 
+                : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sidebar-foreground/70"
+            )}>
+              <Settings className="w-5 h-5" />
+              <span className="font-medium text-sm">Settings</span>
+            </a>
+          </Link>
+          <a 
+            href="https://bnsc.com/help" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-md transition-all duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sidebar-foreground/70"
+          >
+            <HelpCircle className="w-5 h-5" />
+            <span className="font-medium text-sm">Help Center</span>
+          </a>
+        </div>
+
+        <Separator className="bg-sidebar-border" />
+
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
           <div className="w-8 h-8 rounded-full bg-sidebar-accent flex items-center justify-center border border-sidebar-border">
             <span className="font-medium text-xs">JD</span>
