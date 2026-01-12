@@ -10,13 +10,15 @@ import {
   Menu,
   HelpCircle,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  UserCheck
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/authContext";
 
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/" },
@@ -27,14 +29,20 @@ const NAV_ITEMS = [
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { isAuthenticated, userRole, logout } = useAuth();
 
   // If we are on landing or login, don't show the sidebar layout
   if (location === "/landing" || location === "/login") {
     return <>{children}</>;
   }
+
+  const handleLogout = () => {
+    logout();
+    setLocation("/login");
+  };
 
   const NavContent = (mobile = false) => {
     const collapsed = !mobile && isCollapsed;
@@ -78,6 +86,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               );
             })}
+
+            {/* Super Admin Only: User Approval */}
+            {userRole === "super_admin" && (
+              <>
+                <Separator className="bg-sidebar-border my-2" />
+                <Link href="/user-approval">
+                  <a className={cn(
+                    "flex items-center gap-3 px-3 py-2.5 rounded-md transition-all duration-200 group relative",
+                    location === "/user-approval" 
+                      ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm" 
+                      : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sidebar-foreground/70",
+                    collapsed && "justify-center px-0"
+                  )}>
+                    <UserCheck className={cn("w-5 h-5 shrink-0", location === "/user-approval" ? "text-white" : "text-sidebar-foreground/70 group-hover:text-sidebar-accent-foreground")} />
+                    {!collapsed && <span className="font-medium text-sm whitespace-nowrap overflow-hidden transition-opacity duration-300">User Approval</span>}
+                    {collapsed && (
+                      <div className="absolute left-full ml-2 px-2 py-1 bg-popover text-popover-foreground text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50 shadow-md border whitespace-nowrap">
+                        User Approval
+                      </div>
+                    )}
+                  </a>
+                </Link>
+              </>
+            )}
           </nav>
 
           <div className="mt-auto space-y-4">
@@ -130,13 +162,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {!collapsed && (
                 <div className="flex flex-col overflow-hidden transition-opacity duration-300">
                   <span className="text-sm font-medium truncate">John Developer</span>
-                  <span className="text-xs text-sidebar-foreground/50">Admin</span>
+                  <span className="text-xs text-sidebar-foreground/50 capitalize">{userRole?.replace("_", " ") || "Admin"}</span>
                 </div>
               )}
             </div>
             
             <Button 
               variant="ghost" 
+              onClick={handleLogout}
               className={cn(
                 "w-full justify-start text-sidebar-foreground/70 hover:text-destructive hover:bg-destructive/10 px-2 group relative",
                 collapsed && "justify-center"
@@ -200,7 +233,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Content */}
       <main className={cn(
         "flex-1 p-4 md:p-8 pt-20 md:pt-8 min-h-screen transition-all duration-300 ease-in-out",
-        "md:ml-0", // Default
+        "md:ml-0",
         !isCollapsed ? "md:ml-64" : "md:ml-20"
       )}>
         <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">

@@ -1,0 +1,38 @@
+I need to make significant updates to this PropTech dashboard. Please implement the following features while maintaining the existing design system, color palette, and component style.
+
+Here are the specific requirements:
+
+### 1. Authentication Flow (Login + MFA)
+* Create a new Login Page as the entry point.
+* **Step 1:** User enters Username and Password.
+* **Step 2 (MFA):** Upon submission, show a second screen/modal asking for an MFA (Multi-Factor Authentication) code.
+* *Note:* For now, please implement the **UI flow and frontend logic only** (you can mock the successful login).
+
+### 2. Collapsible Sidebar
+* Update the main navigation sidebar to be collapsible.
+* Add a toggle button (hamburger menu or arrow icon) at the top or bottom of the sidebar.
+* When collapsed, show only the icons. When expanded, show icons + text labels.
+* Ensure the main content area resizes responsively when the menu is collapsed.
+
+### 3. Role-Based Dashboards (Super Admin vs. Admin)
+I need the system to handle two distinct user roles. Please refactor the dashboard routing or state to support this:
+
+**A. Super Admin View:**
+* Has access to all existing features.
+* **New Feature:** Add a specific "User Approval" page or section.
+* This page should display a table of new admins who have requested access.
+* Include columns for: Name, Email, Date Requested, and Status.
+* Include action buttons: "Approve" and "Reject".
+
+**B. Admin View:**
+* This dashboard looks exactly like the Super Admin dashboard.
+* **Restriction:** They CANNOT see the "User Approval" page.
+* Their primary focus is the existing functionality (updating available properties).
+
+### Implementation Plan:
+1.  Modify the Layout to handle the collapsible state.
+2.  Create the Login/MFA screens.
+3.  Create the "User Approval" component (Table with dummy data for now).
+4.  Implement a mock state (e.g., `userRole = 'super_admin'`) to conditionally render the "User Approval" menu item based on the role.
+
+Please prioritize keeping the UI clean and matching the current "prop-tech" aesthetic.
